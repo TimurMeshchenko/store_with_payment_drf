@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru" translate="no" class="adaptive">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/store/media/favicon.ico">
+    <link href="{% static 'css/main-v3.min.716ab6e5b2568b3a.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/common.min.121bb7180e1b90be.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/main-page-v3.min.7309e6f7f633c75b.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/popups/productCardPopup.min.6ca2574b943416d5.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/popups/productSelectionManager.min.2f97c2d2117bb281.css' %}" rel="stylesheet" type="text/css">
+
+    {% block css %}
+    {% endblock %}
+
+    {% block title %}
+    <title>Каталог</title>
+    {% endblock %}
+    </head>
+    <body>
+    <div class="wrapper">
+        <header class="header j-header header--custom-bg" style="background-image:url();">
+            <div class="header__container">
+                <div class="header__bottom">
+                    <div class="header__nav-element nav-element">
+                        <a class="nav-element__logo" href="/store" style="width: 45px;height: 50px;">
+                            <img src="/store/media/logo.png">
+                        </a>
+                    </div>
+                    <button class="nav-element__burger j-menu-burger-btn j-wba-header-item" type="button"><span class="nav-element__burger-line"></span></button>
+                    <div id="searchBlock" class="header__search-catalog search-catalog j-search-catalog" data-link="
+         {on &#39;click&#39; &#39;.j-suggest&#39; followSuggest}
+         {on &#39;click&#39; &#39;.j-suggest-tag&#39; fillWithTag}
+         {on &#39;click&#39; &#39;.j-clear-history-all&#39; clearAllSearchHistories}
+         {on &#39;click&#39; &#39;.j-clear-history&#39; clearSearchHistory}
+         {on &#39;mouseover&#39; &#39;.j-suggest&#39; markSuggest}
+         {on &#39;mouseover&#39; &#39;.j-unmark-suggests&#39; unmarkSuggests}
+         {on &#39;mouseleave&#39; &#39;.j-search-catalog-autocomplete&#39; unmarkSuggests}
+         class{merge: imageChipData toggle=&#39;search-catalog--photo&#39;}"
+                        data-jsv="#82^/82^#83^/83^#84^/84^#85^/85^#86^/86^#87^/87^#88^/88^">
+                        <div class="search-catalog__block"
+                            data-link="class{merge: hasAnySuggestions() toggle=&#39;search-catalog--active&#39;}">
+                            <input autocomplete="off" id="searchInput" class="search-catalog__input"
+                                type="search" maxlength="300"
+                                placeholder="Найти товар"
+                                data-link="{:searchText:}readonly{:imageChipData}{on &#39;keydown&#39; onSearchInputKeypress}{on &#39;focus&#39; enableSuggestions}{on &#39;input&#39; showSuggestionsDebounced}"
+                                data-jsv="#69^/69^#70^/70^#71^/71^">
+                        </div>
+                        <div class="autocomplete search-catalog__autocomplete j-search-catalog-autocomplete"
+                        data-link="{if ~root.$isDesktop &amp;&amp; hasAnySuggestions() tmpl=&#39;searchSuggestionsTmpl&#39;}">
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        fill="#000000" style="height: 30px;padding-right: 10px;padding-left: 10px;cursor: pointer;">
+                        <g id="SVGRepo_iconCarrier">
+                            <defs> </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)" fill="#000000">
+                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                        <path
+                                            d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598"
+                                            id="profile_round-[#1342]"> </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="header__navbar-pc navbar-pc j-b-header-menu" id="basketContent">
+                        <div class="navbar-pc__item j-item-basket"> <a class="navbar-pc__link"
+                                href="/store/basket"> <span
+                                    class="navbar-pc__icon navbar-pc__icon--basket"><svg
+                                        width="26" height="24" fill="black">
+                                        <path fill-rule="evenodd"
+                                            d="M9.522 14.866a1 1 0 0 0 1.1.653l12.766-2.036a1 1 0 0 0 .823-.792l1.355-6.792a1 1 0 0 0-.964-1.196l-17.36-.28a1 1 0 0 0-.958 1.335l3.238 9.108ZM10.326 23.052a2.326 2.326 0 1 0 0-4.652 2.326 2.326 0 0 0 0 4.652ZM21.957 23.052a2.326 2.326 0 1 0 0-4.652 2.326 2.326 0 0 0 0 4.652Z"
+                                            clip-rule="evenodd" />
+                                        <path
+                                            d="M6.169.9h-4.71a1.31 1.31 0 1 0 0 2.618h3.337a1 1 0 0 1 .945.672l.942 2.71L9.35 5.6 8.035 2.182A2 2 0 0 0 6.17.9Z" />
+                                    </svg>
+                                    <span class="navbar-pc__notify">
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        {% block body %}
+        <main class="main left-bg" role="main" id="body-layout">
+            <div class="basket_alert">
+                <p class="basket_alert_message">Товар добавлен в корзину</p>
+            </div>
+            <div id="mainContainer" class="main__container">
+
+
+                <div id="app">
+                    <div data-link="visible{:containerId == ~router.activeContainer &amp;&amp; !~router.showPreview}"
+                        style="display: block;">
+                        <div class="main-page">
+                            <div class="main-page__content-wrapper">
+                                <div class="main-page__content" data-link="
+            
+                {on &#39;click&#39; &#39;.j-product-item, .j-add-to-basket, .j-add-to-postpone&#39; !!homeCardsManager &amp;&amp; homeCardsManager.clickCardAnalitics}
+            
+            
+                {on &#39;mouseenter&#39; &#39;.j-product-item&#39; !!homeCardsManager &amp;&amp; homeCardsManager.cardHoverHandler}
+                {on &#39;mouseleave&#39; &#39;.j-product-item&#39; !!homeCardsManager &amp;&amp; homeCardsManager.cardUnhoverHandler}
+                
+            
+                {on &#39;touchstart&#39; &#39;.j-thumbnail-wrap&#39; !!homeCardsManager &amp;&amp; homeCardsManager.startImageSlide}
+                {on &#39;touchmove&#39; &#39;.j-thumbnail-wrap&#39; !!homeCardsManager &amp;&amp; homeCardsManager.proceedImageSlide}
+                {on &#39;touchend&#39; &#39;.j-thumbnail-wrap&#39; !!homeCardsManager &amp;&amp; homeCardsManager.stopImageSlide}
+                {on &#39;mousedown&#39; &#39;.j-thumbnail-wrap&#39; !!homeCardsManager &amp;&amp; homeCardsManager.startImageSlide}
+                {on &#39;click&#39; &#39;.j-thumbnail-wrap&#39; !!homeCardsManager &amp;&amp; homeCardsManager.checkSliding}
+            
+            
+                {on &#39;click&#39; &#39;.j-star&#39; !!homeCardsManager &amp;&amp; homeCardsManager.moveToComments}
+                {on &#39;click&#39; &#39;.j-stars&#39; !!homeCardsManager &amp;&amp; homeCardsManager.moveToComments}
+            
+            
+                {on &#39;click&#39; &#39;.j-open-product-popup&#39; !!homeCardsManager &amp;&amp; homeCardsManager.showProductCardPopup}
+                {on &#39;click&#39; &#39;.j-open-full-product-card&#39; !!beforeRouterTransition &amp;&amp; beforeRouterTransition}
+            
+            
+                {on &#39;click&#39; &#39;.j-add-to-basket&#39; !!homeCardsManager &amp;&amp; homeCardsManager.addToBasket}
+            
+            
+                {on &#39;click&#39; &#39;.j-add-to-postpone&#39; !!homeCardsManager &amp;&amp; homeCardsManager.addToPoned}
+            
+            
+                {on &#39;elementInViewportEvent&#39; &#39;.j-product-item&#39; !!homeCardsManager &amp;&amp; homeCardsManager.sendListingItemAnalytics}
+            
+        " data-jsv="#148^/148^#149^/149^#150^/150^#151^/151^#152^/152^#153^/153^#154^/154^#155^/155^#156^/156^#157^/157^#158^/158^#159^/159^#160^/160^#161^/161^#162^/162^">
+                                    <script src="{% static 'js/catalog_basket.js' %}"></script>
+                                    <script src="{% static 'js/search.js' %}"></script>
+                                    <script src="{% static 'js/infinity_scroll.js' %}"></script>
+                                    <script src="{% static 'js/popup.js' %}"></script>  
+                                    {% endblock %}
+                                    </body>
+
+</html>
